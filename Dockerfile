@@ -5,6 +5,9 @@ MAINTAINER Jan Pazdziora
 
 RUN yum swap -y -- remove fakesystemd -- install systemd systemd-libs && yum clean all
 
+#installing ssh
+RUN yum -y install openssh-server openssh-clients
+
 # Install FreeIPA client
 RUN yum install -y ipa-client dbus-python perl 'perl(Data::Dumper)' 'perl(Time::HiRes)' && yum clean all
 
