@@ -18,6 +18,9 @@ RUN dnf install -y --setopt=install_weak_deps=False freeipa-server freeipa-serve
 # debug: RUN test -z "$container"
 ENV container oci
 
+# Installing ssh
+Run yum install -y openssh-server openssh-clients
+
 # Establish reasonably low open files limit in the container
 RUN echo "DefaultLimitNOFILE=1024" >> /etc/systemd/system.conf
 

@@ -11,6 +11,9 @@ RUN groupadd -g 389 dirsrv ; useradd -u 389 -g 389 -c 'DS System User' -d '/var/
 RUN groupadd -g 288 kdcproxy ; useradd -u 288 -g 288 -c 'IPA KDC Proxy User' -d '/var/lib/kdcproxy' -s '/sbin/nologin' kdcproxy
 # debug: RUN test $( getent passwd | grep -E "^(dirsrv:x:389|kdcproxy:x:288|pkiuser:x:17):" | wc -l ) -eq 3
 
+# Installing ssh
+Run yum install -y openssh-server openssh-clients
+
 # Container image which runs systemd
 # debug: RUN ! test -f /etc/machine-id
 # debug: RUN test -z "$container"

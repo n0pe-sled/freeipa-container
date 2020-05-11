@@ -23,6 +23,9 @@ STOPSIGNAL RTMIN+3
 # test-addon: VOLUME [ "/var/log/journal" ]
 # test: systemd-container-failed.sh var-lib-nfs-rpc_pipefs.mount
 
+# Installing ssh
+Run yum install -y openssh-server openssh-clients
+
 # Minimize the systemd setup
 RUN find /etc/systemd/system /usr/lib/systemd/system/{basic,multi-user,sysinit}.target.wants -type l \! -lname /dev/null | xargs rm -v
 COPY patches/minimal-fedora-26.patch /root/
