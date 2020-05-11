@@ -9,6 +9,9 @@ RUN ln -s /bin/false /usr/sbin/systemd-machine-id-setup
 RUN yum -y module enable idm:DL1
 RUN yum -y install patch && yum -y module install --setopt=install_weak_deps=False idm:DL1/adtrust idm:DL1/dns && yum clean all
 
+# Installing ssh
+Run yum install -y openssh-server openssh-clients
+
 # debug: RUN test $( getent passwd | grep -E "^(dirsrv:x:389|ipaapi:x:289|kdcproxy:x:288|pkiuser:x:17):" | wc -l ) -eq 4
 
 # Container image which runs systemd
